@@ -15,11 +15,11 @@ Lancement du programme :
 
 Ouvrir un terminal, se déplacer à l'emplacement du
 dossier du programme, puis exécuter la commande
-suivante:   `python3 gui.py`
+suivante :   `python3 gui.py`
 
-Si le programme ne fonctionne pas chez vous, vous
-pouvez générer votre animation à l'aide du terminal
-grâce à la commande suivante:    `python3 terminal.py`
+Si l'interface graphique ne fonctionne pas chez vous,
+vous pouvez générer votre animation à l'aide du terminal
+grâce à la commande suivante :    `python3 terminal.py`
 
 
 
