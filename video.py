@@ -17,12 +17,16 @@ prev_pos = (246,56)
 counter = 0
 
 def create_folder():
+    if os.path.exists("./tmp") :
+        delete_folder()
+    
     os.mkdir("./tmp")
 
 def delete_folder():
     global counter
-    for i in range(counter):
-        os.remove("./tmp/%s.png" % i)
+    files = os.listdir("./tmp")
+    for pic in files:
+        os.remove("./tmp/%s" % pic)
     os.rmdir("./tmp")
 
 def reset_counter():
@@ -61,7 +65,7 @@ def creer_image(template, pos_x, pos_y):
 def creer_video(fps):
     frameSize = (511,723)
 
-    out = cv2.VideoWriter('video.mp4',cv2.VideoWriter_fourcc(*'mp4v'), fps, frameSize)
+    out = cv2.VideoWriter('video.avi',cv2.VideoWriter_fourcc(*'DIVX'), fps, frameSize)
 
     for i in range(counter):
         filename = "./tmp/%s.png" % i

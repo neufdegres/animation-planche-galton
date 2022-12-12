@@ -1,9 +1,15 @@
-from video import *
+import sys
 import threading
 from time import sleep
 from tkinter import *
 from PIL import Image
 from tkVideoPlayer import TkinterVideo
+
+try:
+    from video import *
+except:
+    print("Erreur: veuillez vous placer dans le dossier contenant \"gui.py\" et \"video.py\"")
+    sys.exit(1)
 
 pause_pushed = False
 
@@ -18,8 +24,8 @@ def thread_loop():
             sleep(1)   
 
 def delete_video():
-    if os.path.exists("./video.mp4"):
-        os.remove("./video.mp4")
+    if os.path.exists("./video.avi"):
+        os.remove("./video.avi")
 
 def play():
     global video, pause_pushed, loop
@@ -43,7 +49,7 @@ def play():
         # création du widget de l'animation
         video = TkinterVideo(master=canvas_frame, scaled=True)
         video.place(x=0, y=0, anchor="nw", relwidth=1.0, relheight=1.0)
-        video.load(r"video.mp4")
+        video.load(r"video.avi")
         video.play()
         loop = threading.Thread(target=thread_loop)
         loop.start()
@@ -83,8 +89,7 @@ def on_closing():
         loop.join()
         delete_video()
     fenetre.destroy()
-
-
+    
 #-----------------------création fenêtre
 
 fenetre=Tk()
@@ -128,7 +133,7 @@ spinbox_frame = Frame(root, bg="#b9bfc4")
 spinbox_label = Label(spinbox_frame, text="Nombre de billes : ", bg="#b9bfc4", fg="black", font=('UbuntuMono-R.ttf', '12'))
 spinbox_label.pack(side=LEFT)
 
-spinbox = Spinbox(spinbox_frame, from_=20, to=80, increment=5, state='readonly', bg="#b9bfc4", width=10)
+spinbox = Spinbox(spinbox_frame, from_=20, to=70, increment=5, state='readonly', bg="#b9bfc4", width=10)
 spinbox.pack()
 
 spinbox_frame.pack()
